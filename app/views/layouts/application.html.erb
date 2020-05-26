@@ -10,9 +10,8 @@
   </head>
 
   <body>
-    <% flash.each do|name, msg|%>
-      <%= msg %>
-    <% end %>
+
+    <p class="flash"> <%= flash.notice %> </p>
     
     <%= yield %>
   </body>

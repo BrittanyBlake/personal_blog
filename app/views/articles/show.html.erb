@@ -2,4 +2,5 @@
 <p> <%= @article.body%> </p>
 
 <p> <%= link_to 'Cancel and return home', articles_path %> </p>
-<p> <%= link_to 'Edit Article', edit_article_path %> </p>
+<p> <%= link_to 'Edit Article', edit_article_path(@article) %> </p>
+<p> <%= link_to 'Delete Article', article_path(@article), method: :delete, data: {confirm: "Are you sure?"}  %> </p>

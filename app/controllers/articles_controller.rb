@@ -22,4 +22,25 @@ class ArticlesController < ApplicationController
             render 'new'
         end
     end
+
+    def edit
+        @article = Article.find(params[:id])
+    end
+
+    def update
+        @article = Article.find(params[:id])
+        @article.update(article_params)
+         if @article.save
+            flash[:notice] = "Article '#{@article.title}' successfully edited"
+            redirect_to @article
+        else
+            render 'edit'
+        end
+    end
+
+    def destroy
+        @article = Article.find(params[:id])
+        @article.destroy
+        redirect_to @article
+    end
 end
