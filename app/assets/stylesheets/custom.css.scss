@@ -1,1 +1,17 @@
 @import "bootstrap";
+
+body{
+    background-color:  #f8edeb;
+}
+.main-jumbo{
+    background-image: asset-url('bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 90vh;
+}
+
+.card{
+    mix-blend-mode: multiply;
+    
+}
