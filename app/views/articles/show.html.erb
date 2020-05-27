@@ -1,13 +1,20 @@
-<div class="jumbotron jumbotron-fluid text-center">
-  <div class="container">
-    <h1 class="display-4">Article Title</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+<div class="container">
+  <div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+      <h1 class="display-4"><%=@article.title%></h1>
+      <p class="lead"> By Brittany Blake </p>
+      <small class="text-muted"> Created <%=time_ago_in_words(@article.created_at)%> ago & Updated <%=time_ago_in_words(@article.updated_at)%> ago </small> <br>
+      
+    </div>
   </div>
+
+  <p> <%= @article.body%> </p>
+  <hr>
+
+  <small> 
+    <%= link_to 'Cancel and return home', articles_path, class:"text-muted" %> | 
+    <%= link_to 'Edit Article', edit_article_path(@article), class:"text-muted" %> | 
+    <%= link_to 'Delete Article', article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class:"text-muted"  %>
+  </small>
+
 </div>
-
-<h1> <%=@article.title%> </h1>
-<p> <%= @article.body%> </p>
-
-<p> <%= link_to 'Cancel and return home', articles_path %> </p>
-<p> <%= link_to 'Edit Article', edit_article_path(@article) %> </p>
-<p> <%= link_to 'Delete Article', article_path(@article), method: :delete, data: {confirm: "Are you sure?"}  %> </p>

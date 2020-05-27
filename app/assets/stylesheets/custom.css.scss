@@ -1,5 +1,20 @@
 @import "bootstrap";
 
+
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
 body{
     background-color:  #f8edeb;
 }

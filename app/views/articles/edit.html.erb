@@ -1,5 +1,7 @@
-<h1> Edit an Article </h1>
+<h1 class="text-center text-muted my-5"> Edit an Article </h1>
 
 <%= render 'form'%>
 
-<p> <%= link_to 'Cancel and return to article', article_path(@article) %> </p>
+<div class="container text-center">
+    <%= link_to '[Cancel and Return to Article]', article_path(@article), class:"text-info" %> 
+</div>
