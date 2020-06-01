@@ -2,7 +2,7 @@
   <div class="jumbotron jumbotron-fluid text-center">
     <div class="container">
       <h1 class="display-4"><%=@article.title%></h1>
-      <p class="lead"> By Brittany Blake </p>
+      <p class="lead"> <%= @article.user.username if @article.user%> </p>
       <small class="text-muted"> Created <%=time_ago_in_words(@article.created_at)%> ago & Updated <%=time_ago_in_words(@article.updated_at)%> ago </small> <br>
       
     </div>
