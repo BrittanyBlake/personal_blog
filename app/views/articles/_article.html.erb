@@ -8,7 +8,9 @@
                     <%= link_to 'Read this article', article_path(article), class:"btn btn-outline-info" %>
                     <%= link_to 'Edit this article', edit_article_path(article), class:"btn btn-outline-success" %>
                     <%= link_to 'Delete this article', article_path(article), method: :delete, data: {confirm: "Are you sure?"} , class:"btn btn-outline-danger" %>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text">
+                        <small class="text-muted"> Created <%=time_ago_in_words(article.created_at)%> ago & updated <%=time_ago_in_words(article.created_at)%> ago</small>
+                    </p>
                 </div>
             </div>
         <% end %>
