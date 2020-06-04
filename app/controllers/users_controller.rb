@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-            flash[:notice] = "You have successfully signed up. Welcome to the blog '#{@user.username}'!"
+            flash[:notice] = "You have successfully signed up. Welcome to the blog #{@user.username}!"
             redirect_to articles_path
         else
             render 'new'
@@ -22,11 +22,17 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @user.update(user_params)
         if @user.save
-            flash[:notice] = "You're account has been successfully edited, '#{@user.username}'."
+            flash[:notice] = "You're account has been successfully edited, #{@user.username}."
             redirect_to @user
         else
             render 'edit'
         end
+    end
+
+    def show
+        @user = User.find(params[:id])
+        @articles = @user.articles
+   
     end
 
     private
