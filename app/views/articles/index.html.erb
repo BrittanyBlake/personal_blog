@@ -5,7 +5,12 @@
     <hr class="my-4">
     <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
     <p class="lead">
-    <%= link_to 'Sign Up', signup_path, class:"btn btn-outline-light btn-lg" %>
+    <% if logged_in?%>
+      <%= link_to 'View Your Profile', user_path(current_user), class:"btn btn-outline-light btn-lg" %>
+    <% else %>
+      <%= link_to 'Sign Up', signup_path, class:"btn btn-outline-light btn-lg" %>
+    <% end %>
+    
      
     </p>
   </div>
