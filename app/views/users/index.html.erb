@@ -1,7 +1,10 @@
 <div class="container col-12">
     <div id="page-content">
         <h1 class="text-center mt=4"> Bloggers </h1>
-        <div class="card-columns" id="articles">
+        <div class="apple_pagination">
+            <%= will_paginate @users, :container => false %>
+        </div>
+        <div class="card-columns">
             <% @users.each do |user|%>
                 <div class="card text-center p-3">
                     <div class="card-body">
