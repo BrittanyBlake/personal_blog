@@ -9,6 +9,9 @@
      
     </p>
   </div>
-
   
+<div class="apple_pagination">
+    <%= will_paginate @articles, :container => false %>
+</div>
+
 <%= render 'article'%>
