@@ -3,7 +3,7 @@
         <h1 class="text-center mt-4"> <%= @user.username%>'s profile </h1>
         <%= gravatar_for @user, size: 200%>
         <div class="text-center mt-4">
-            <% if logged_in? && (@user == current_user)%>
+            <% if logged_in? && (@user == current_user || current_user.admin?)%>
                 <%= link_to 'Edit Profile', edit_user_path(@user), class:"btn btn-outline-success" %>
                 <%= link_to 'Delete Profile', user_path(@user), method: :delete, data: {confirm: "Are you sure?"} , class:"btn btn-outline-danger" %>
             <%end%>
