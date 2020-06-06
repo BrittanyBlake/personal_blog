@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
     include ArticlesHelper
     before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+    before_action :require_user, except: [:index, :show]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def index
         @articles = Article.all
@@ -47,5 +48,12 @@ class ArticlesController < ApplicationController
     private
     def set_article
         @article = Article.find(params[:id])
+    end
+
+    def require_same_user
+        if current_user != @article.user
+            flash[:alert] = "You are not authorized to perform this action"
+            redirect_to @article
+        end
     end
 end
