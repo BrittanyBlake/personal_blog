@@ -12,11 +12,15 @@
 
   <p> <%= @article.body%> </p>
   <hr>
-
+<div class="container text-center">
   <small> 
-    <%= link_to 'Cancel and return home', articles_path, class:"text-muted" %> | 
-    <%= link_to 'Edit Article', edit_article_path(@article), class:"text-muted" %> | 
-    <%= link_to 'Delete Article', article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class:"text-muted"  %>
+    <%= link_to 'Cancel and return home', articles_path, class:"text-muted" %>
+    <%if logged_in? && (@article.user == current_user)%>
+      | <%= link_to 'Edit Article', edit_article_path(@article), class:"text-muted" %> | 
+      <%= link_to 'Delete Article', article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class:"text-muted"  %>
+    <% end %>
   </small>
+</div>
+
 
 </div>
