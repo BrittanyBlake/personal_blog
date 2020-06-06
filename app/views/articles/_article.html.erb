@@ -6,7 +6,7 @@
                     <h5 class="card-title"> <%= link_to article.title, article_path(article), class:"text-muted" %></h5>
                     <p class="card-text"> <%= truncate(article.body, length:50)%> </p>
                     <%= link_to 'Read this article', article_path(article), class:"btn btn-outline-info" %>
-                    <% if logged_in? && (article.user == current_user) %>
+                    <% if logged_in? && (article.user == current_user || current_user.admin?) %>
                         <%= link_to 'Edit this article', edit_article_path(article), class:"btn btn-outline-success" %>
                         <%= link_to 'Delete this article', article_path(article), method: :delete, data: {confirm: "Are you sure?"} , class:"btn btn-outline-danger" %>
                     <% end %>

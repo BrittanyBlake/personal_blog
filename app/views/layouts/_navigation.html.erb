@@ -23,8 +23,11 @@
         </div>
       </li>
       <% if logged_in?%>
+      <li class="nav-item active nav-link text-light">
+        <%= "(Admin)" if current_user.admin?%> 
+      </li>
       <li class="nav-item active">
-          <%= link_to current_user.username, user_path(current_user), class: "nav-link text-light"%>
+           <%= link_to current_user.username, user_path(current_user), class: "nav-link text-light"%>
         </li>
         <li class="nav-item active">
           <%= link_to 'Logout', logout_path, class: "nav-link text-light", method: :delete%>
