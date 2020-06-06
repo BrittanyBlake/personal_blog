@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:edit, :update, :show]
-    before_action :require_user, except: [:index, :show]
+    before_action :set_user, only: [:edit, :update, :show, :destroy]
+    before_action :require_user, except: [:index, :show, :new, :create]
     before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def new
@@ -38,6 +38,13 @@ class UsersController < ApplicationController
     def index
         @users = User.all
         @users = User.paginate(page: params[:page], per_page: 6)
+    end
+
+    def destroy
+        @user.destroy
+        session[:user_id] = nil
+        flash[:notice] = "Your account and all your artcles have been successfully deleted"
+        redirect_to root_path
     end
 
     private
