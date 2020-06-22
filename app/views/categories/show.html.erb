@@ -1,5 +1,16 @@
 <div class="container col-12">
     <div id="page-content">
-        <h1 class="text-center mt-4"> <%= @category.name%>'s profile </h1>
+        <h1 class="text-center mt-4"> <%= @category.name%></h1>
     </div>
+</div>
+
+<div class="container text-center">
+  <small> 
+    <%= link_to 'Cancel and return home', articles_path, class:"text-muted" %>
+    | <%= link_to 'Return to all categories', categories_path, class:"text-muted" %>
+    <%if logged_in? && current_user.admin?%>
+      | <%= link_to 'Edit Category', edit_category_path(@category), class:"text-muted" %> | 
+      <%= link_to 'Delete Category', category_path(@category), method: :delete, data: {confirm: "Are you sure?"}, class:"text-muted"  %>
+    <% end %>
+  </small>
 </div>
