@@ -17,6 +17,14 @@
                         <%= f.text_area :body, size:"10x10", class:"form-control shadow rounded", placeholder:"Body of Article"%>
                      </div>
                 </div>
+                <div class="form-group row">
+                     <%= f.label :categories, class:"col-2 col-form-label text-muted" %>
+                     <div class="col-10  ">
+                        <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+                            <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "mx-3 checkbox  shadow rounded") + cb.text } %>
+                        <% end %>
+                     </div>
+                </div>
                 <div class="form-group row justify-content-center">
                     <%= f.submit class:"btn btn-outline-secondary btn-lg"%>
                 </div>
