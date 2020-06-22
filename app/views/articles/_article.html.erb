@@ -1,9 +1,15 @@
 
+    
     <div class="card-columns" id="articles">
         <% @articles.each do |article|%>
             <div class="card text-center p-3">
                 <div class="card-body">
                     <h5 class="card-title"> <%= link_to article.title, article_path(article), class:"text-muted" %></h5>
+                    <small class="text-muted"> 
+                        <% if article.categories.any?%>
+                        <%=render article.categories%>
+                    <% end %>
+                    </small>
                     <p class="card-text"> <%= truncate(article.body, length:50)%> </p>
                     <%= link_to 'Read this article', article_path(article), class:"btn btn-outline-info" %>
                     <% if logged_in? && (article.user == current_user || current_user.admin?) %>

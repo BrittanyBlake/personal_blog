@@ -6,7 +6,11 @@
        <p class="lead text-muted"> By <%= link_to @article.user.username, user_path(@article.user), class:"text-muted lead" %></p>
       <%end%>
       <small class="text-muted"> Created <%=time_ago_in_words(@article.created_at)%> ago & Updated <%=time_ago_in_words(@article.updated_at)%> ago </small> <br>
-      
+            <small class="text-muted"> 
+              <% if @article.categories.any?%>
+                <%=render @article.categories%>
+              <% end %>
+            </small> <br>
     </div>
   </div>
 
